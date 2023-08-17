@@ -27,11 +27,11 @@ export default ({
   primaryLinkText = "Get Started",
   primaryLinkUrl = "http://timerse.com",
   secondaryLinkText = "Contact Us",
-  secondaryLinkUrl = "mailto:hello@guestly.io",
+  secondaryLinkUrl = "#contact-us",
   pushDownFooter = true
 }) => {
   return (
-    <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}  id="contact-us">
+    <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}>
       <ContentWithPaddingXl>
       <PrimaryBackgroundContainer>
         <Row>
