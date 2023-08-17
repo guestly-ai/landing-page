@@ -66,10 +66,10 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
    */
 
   const defaultCards = [
-    { imageSrc: CustomizeIconImage, title: "Personalized Communication, Elevated Results", description: "Our innovative solution isn't just about convenience; it's about cultivating unforgettable guest experience. By bridging the gap between hotels and guests, we're enhancing customer satisfaction, boosting guest loyalty, and ultimately driving positive business outcomes." },
-    { imageSrc: ReliableIconImage, title: "Innovation in Every Interaction", description: "Our team is driven by an unyielding commitment to innovation. We understand that the hospitality industry is ever-evolving, and that's why Guestly seamlessly integrates with Property Management System (PMS) ad employs smart automations. This ensure that your communication remains ahead of the curve, delivering convenience and relevance to your guests." },
-    { imageSrc: FastIconImage, title: "Features That Redefine Hospitality", description: "Guestly comes packed with features designed to streamline guest communication. From automated messaging to multilingual support, our tool is tailor-made to enhance the gust journey. With Guestly, your guests receive personalized information, recommendations, and offer-creating truly memorable stay." },
-    { imageSrc: SimpleIconImage, title: "Empower Comunication, Elevate", description: "Guestly harnesses the power of WhatsApp, the world's leading messaging platform, to transform gust engagement. Imagine building lasting customer relationship, effortlessly answering guest inquiries, providing timely booking updates, and promoting your business-all within the familiar and accessible realm of WhatsApp." }
+    { imageSrc: SimpleIconImage, title: "Guest Engagement", description: "Elevate your establishment's guest engagement with streamlined communication on their preferred platform – WhatsApp. From booking updates to personalized recommendations, create seamless and memorable experiences." },
+     { imageSrc: FastIconImage, title: "Personalized Journeys", description: "Craft individually tailored stays. Deliver relevant information, exclusive offers, and local insights directly to guests' WhatsApp. Forge memorable experiences that foster lasting guest loyalty." },
+    { imageSrc: CustomizeIconImage, title: "Effortless Service", description: "Streamline operations with automation. From check-in details to instant replies, provide superior service with ease. Focus on creating memorable guest moments, not administrative tasks." },
+    { imageSrc: ReliableIconImage, title: "Future Hospitality", description: "Embrace the forefront of guest communication innovation. Unlock advanced features like marketing campaigns, multi-device support, and PMS integration. Stay ahead in a rapidly evolving industry." }
   ];
 
   if (!cards) cards = defaultCards;
