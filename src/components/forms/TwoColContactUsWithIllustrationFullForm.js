@@ -35,7 +35,7 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`
 
 export default ({
   subheading = "CONTACT US",
-  heading = <>Want <span tw="text-primary-500">WhatsApp</span><wbr/> to be your next Communication channel?</>,
+  heading = <>Want <span tw="text-primary-500">WhatsApp</span><wbr/> to be your next communication channel?</>,
   description = "We're excited to make your business more personal and successful with WhatsApp conversations.",
   submitButtonText = "Send",
   formAction = "#",
@@ -56,10 +56,10 @@ export default ({
             <Heading>{heading}</Heading>
             {description && <Description>{description}</Description>}
             <Form action={formAction} method={formMethod}>
-              <Input type="text" name="name" placeholder="Your Name" />
-              <Input type="email" name="email" placeholder="Your Email Address" />
+              <Input type="text" name="name" placeholder="Your name" />
+              <Input type="email" name="email" placeholder="Your email address" />
               <Input type="text" name="company" placeholder="Company name" />
-              <Textarea name="message" placeholder="Your Message Here" />
+              <Textarea name="message" placeholder="Your message here" />
               <SubmitButton type="submit">{submitButtonText}</SubmitButton>
             </Form>
           </TextContent>
