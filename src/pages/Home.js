@@ -129,7 +129,7 @@ export default () => {
         subheading={<Subheading>FAQS</Subheading>}
         heading={
           <>
-            You have <HighlightedText>Questions?</HighlightedText>
+            You have <HighlightedText>questions?</HighlightedText>
           </>
         }
         faqs={[
