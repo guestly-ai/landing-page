@@ -23,10 +23,10 @@ export default () => {
         subheading={<Subheading>Why Guestly</Subheading>}
         heading={
           <>
-            Your Hotel's Unlimited Guest <HighlightedText>Communication Tool</HighlightedText>
+            Leverage your <HighlightedText>guest experience</HighlightedText>
           </>
         }
-        description="At Guestly, we're on a mission to revolutionize the way hotels, B&B and resorts communicate with their guests."
+        description="At Guestly, we're on a mission to revolutionize the way Hotels, B&Bs, Apartments and Resorts communicate with their guests."
       />
       <FeatureWithSteps
         subheading={<Subheading>Get Started</Subheading>}
@@ -43,81 +43,81 @@ export default () => {
         subheading={<Subheading>Pricing</Subheading>}
         heading={
           <>
-            Start chatting with your guests{" "}
+            Start <HighlightedText>chatting</HighlightedText> with your guests{" "}
             <HighlightedText>today</HighlightedText>
           </>
         }
-        primaryButtonText="Register Now"
+        primaryButtonText="Request Now"
         features={[
           {
             Icon: CheckIcon,
-            title: "30 day free trial",
+            title: "30-day free trial",
             iconContainerCss: tw`bg-green-300 text-green-800`
           },
           {
             Icon: CheckIcon,
-            title: "No setup fee",
+            title: "No setup fees",
             iconContainerCss: tw`bg-green-300 text-green-800`
           },
           {
             Icon: CheckIcon,
-            title: "PC & Mobile ready",
+            title: "PC & mobile ready",
             iconContainerCss: tw`bg-green-300 text-green-800`
           }
         ]}
         plans={[
           {
             name: "Starter",
-            price: "€49.00",
+            price: "€49",
             duration: "Monthly (pay yearly)",
             mainFeature: "For small businesses",
             features: [
-              "1 Whatsapp Phone Number",
-              "1000 Conversations/month",
+              "1 Whatsapp Phone number",
+              "1000 Conversations/month*",
               "Unlimited Contacts",
-              "3 Languages Supported",
+              "3 Languages supported",
               "1 User",
-              "Direct Message",
+              "Direct Messages",
               "Automated Broadcast Messages",
               "Website Widget",
-              "PMS API Integration",
+              "PMS API Integration*",
               "Email & Phone Support"
             ]
           },
           {
             name: "Pro",
-            price: "€79.00",
+            price: "€79",
             duration: "Monthly (pay yearly)",
             mainFeature: "For the SMEs",
             features: [
-              "1 Whatsapp Phone Number",
-              "3000 Conversations/month",
+              "1 Whatsapp Phone number",
+              "3000 Conversations/month*",
               "Unlimited Contacts",
-              "3 Languages Supported",
-              "5 User",
-              "Direct Message",
+              "3 Languages supported",
+              "5 Users",
+              "Direct Messages",
               "Automated Broadcast Messages",
               "Website Widget",
-              "PMS API Integration",
+              "PMS API Integration*",
               "Email & Phone Support"
             ],
             featured: true
           },
           {
             name: "Pro",
-            price: "€139.00",
+            price: "€139",
             duration: "Monthly (pay yearly)",
             mainFeature: "For large businesses",
             features: [
-              "1 Whatsapp Phone Number",
-              "Unlimited Conversations/month",
+              "1 Whatsapp Phone number",
+              "Unlimited Conversations/month*",
               "Unlimited Contacts",
-              "3 Languages Supported",
-              "Unlimited User",
-              "Direct Message",
+              "3 Languages supported",
+              "Unlimited Users",
+              "Direct Messages",
               "Automated Broadcast Messages",
               "Website Widget",
-              "PMS API Integration",
+              "PMS API Integration*",
               "Email & Phone Support"
             ]
           }
@@ -129,7 +129,7 @@ export default () => {
         subheading={<Subheading>FAQS</Subheading>}
         heading={
           <>
-            You have <HighlightedText>Questions ?</HighlightedText>
+            You have <HighlightedText>Questions?</HighlightedText>
           </>
         }
         faqs={[
@@ -153,7 +153,7 @@ export default () => {
             question:
               "Is there an extra fee for using the WhatsApp Business API?",
             answer:
-              "Yes, there is an additional cost of €0.04-0.11 for each conversation (24-hour message threads) that you send using the WhatsApp Business API. This fee is paid to WhatsApp from your Facebook Business Account."
+              "Yes, there is an additional cost of €0.03-0.05 for each conversation (24-hour message threads) that you send using the WhatsApp Business API. This fee is paid to WhatsApp from your Facebook Business Account."
           },
           {
             question: "How secure is my guest data with Guestly?",
