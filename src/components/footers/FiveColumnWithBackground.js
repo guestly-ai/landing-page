@@ -46,7 +46,7 @@ export default () => {
             <LogoImg src={LogoImage} />
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2023 Guestly. All Rights Reserved.
+            &copy; 2023 Guestly. All Rights Reserved. Owned by Giorgi Nicola - VAT IT03029970211
           </CopywrightNotice>
         </ThreeColRow>
       </Content>
