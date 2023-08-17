@@ -25,7 +25,7 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
 `;
 
-const TEXTS = ['Hotel', 'B&B', 'Resort'];
+const TEXTS = ['Hotel', 'B&B', 'Apartment', 'Resort'];
 
 
 export default ({ roundedHeaderButton }) => {
@@ -45,12 +45,12 @@ export default ({ roundedHeaderButton }) => {
         <TwoColumn>
           <LeftColumn>
             <Heading>
-              Guest Communication tool for your <span tw="text-primary-500">
+              Guest Communication Tool for your <span tw="text-primary-500">
               <TextTransition inline={true} springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
               </span>
             </Heading>
             <Paragraph>
-              Build customer relationship, answer questions, send booking updates, promote your business. All in Whatsapp.
+              Build customer relationships, answer questions, send booking updates, promote your business. All in WhatsApp.
             </Paragraph>
           </LeftColumn>
           <RightColumn>
