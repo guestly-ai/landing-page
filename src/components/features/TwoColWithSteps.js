@@ -59,14 +59,14 @@ export default ({
   const defaultSteps = [
     {
       heading: "Sign up to our solution",
-      description: "Joining Guestly is as easy as a few clicks. Begin your journey by signing up on our platform. Whether you're a small B&B or a large resort, Guestly caters to your unique communication needs."
+      description: "Joining Guestly is as easy as a few clicks. Begin your journey by signing up on our platform. Whether you're a small B&B or a large Resort, Guestly caters to your unique communication needs."
     },
     {
       heading: "Connect your WhatsApp account and PMS",
       description: "Once you're in, it's time to bring the magic to life. Connect your WhatsApp account, and integrate your Property Management System (PMS) for a seamless flow of information. Our intuitive interface guides you through the process."
     },
     {
-      heading: "Start chatting with your guests",
+      heading: "Engage with your guests",
       description: "With everything set up, you're ready to engage like never before. Reach out to your guests, provide instant updates, answer queries, and craft memorable interactions - all through the platform they love: WhatsApp."
     }
   ];
