@@ -72,16 +72,15 @@ export default () => {
             duration: "Monthly (pay yearly)",
             mainFeature: "For small businesses",
             features: [
-              "1 Whatsapp Phone number",
-              "1000 Conversations/month*",
-              "Unlimited Contacts",
-              "3 Languages supported",
-              "1 User",
-              "Direct Messages",
-              "Automated Broadcast Messages",
-              "Website Widget",
-              "PMS API Integration*",
-              "Email & Phone Support"
+              "750 conversations/month*",
+              "Unlimited contacts",
+              "3 languages supported",
+              "1 user",
+              "Direct messages",
+              "Automated broadcast messages",
+              "Website widget",
+              "PMS API integration*",
+              "Customer support"
             ]
           },
           {
@@ -90,16 +89,15 @@ export default () => {
             duration: "Monthly (pay yearly)",
             mainFeature: "For the SMEs",
             features: [
-              "1 Whatsapp Phone number",
-              "3000 Conversations/month*",
-              "Unlimited Contacts",
-              "3 Languages supported",
-              "5 Users",
-              "Direct Messages",
-              "Automated Broadcast Messages",
-              "Website Widget",
-              "PMS API Integration*",
-              "Email & Phone Support"
+              "2000 conversations/month*",
+              "Unlimited contacts",
+              "3 languages supported",
+              "5 users",
+              "Direct messages",
+              "Automated broadcast messages",
+              "Website widget",
+              "PMS API integration*",
+              "Customer upport"
             ],
             featured: true
           },
@@ -109,16 +107,15 @@ export default () => {
             duration: "Monthly (pay yearly)",
             mainFeature: "For large businesses",
             features: [
-              "1 Whatsapp Phone number",
-              "Unlimited Conversations/month*",
-              "Unlimited Contacts",
-              "3 Languages supported",
-              "Unlimited Users",
-              "Direct Messages",
-              "Automated Broadcast Messages",
-              "Website Widget",
-              "PMS API Integration*",
-              "Email & Phone Support"
+              "Unlimited conversations/month*",
+              "Unlimited contacts",
+              "3 languages supported",
+              "Unlimited users",
+              "Direct messages",
+              "Automated broadcast messages",
+              "Website widget",
+              "PMS API integration*",
+              "Customer support"
             ]
           }
         ]}
