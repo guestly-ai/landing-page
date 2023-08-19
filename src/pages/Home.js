@@ -102,7 +102,7 @@ export default () => {
             featured: true
           },
           {
-            name: "Pro",
+            name: "Premium",
             price: "€139",
             duration: "Monthly (pay yearly)",
             mainFeature: "For large businesses",
