@@ -68,7 +68,7 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
   const defaultCards = [
     { imageSrc: SimpleIconImage, title: "Guest Engagement", description: "Elevate your guest experience with streamlined communication on their preferred platform – WhatsApp." },
      { imageSrc: FastIconImage, title: "Journey Personalization", description: "Deliver relevant information, exclusive offers, and instant replies to foster lasting guest loyalty." },
-    { imageSrc: CustomizeIconImage, title: "Service Automation", description: "From check-in details to check-out campaigns, send the right message at the right time. " },
+    { imageSrc: CustomizeIconImage, title: "Service Automation", description: "From check-in details to check-out campaigns, send the right message at the right time." },
     { imageSrc: ReliableIconImage, title: "Conversational Hospitality", description: "Unlock advanced features like broadcast, marketing campaigns, multi-device support, and PMS integration." }
   ];
 
