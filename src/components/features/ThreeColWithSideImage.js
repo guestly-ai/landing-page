@@ -67,8 +67,8 @@ export default ({ cards = null, heading = "Amazing Features", subheading = "Feat
 
   const defaultCards = [
     { imageSrc: SimpleIconImage, title: "Guest Engagement", description: "Elevate your establishment's guest engagement with streamlined communication on their preferred platform – WhatsApp. From booking updates to personalized recommendations, create seamless and memorable experiences." },
-     { imageSrc: FastIconImage, title: "Personalized Journeys", description: "Craft individually tailored stays. Deliver relevant information, exclusive offers, and local insights directly to guests' WhatsApp. Forge memorable experiences that foster lasting guest loyalty." },
-    { imageSrc: CustomizeIconImage, title: "Effortless Service", description: "Streamline operations with automation. From check-in details to instant replies, provide superior service with ease. Focus on creating memorable guest moments, not administrative tasks." },
+     { imageSrc: FastIconImage, title: "Journey Personalization", description: "Craft individually tailored stays. Deliver relevant information, exclusive offers, and local insights directly to guests' WhatsApp. Forge memorable experiences that foster lasting guest loyalty." },
+    { imageSrc: CustomizeIconImage, title: "Service Automation", description: "Streamline operations with automation. From check-in details to instant replies, provide superior service with ease. Focus on creating memorable guest moments, not administrative tasks." },
     { imageSrc: ReliableIconImage, title: "Future Hospitality", description: "Embrace the forefront of guest communication innovation. Unlock advanced features like marketing campaigns, multi-device support, and PMS integration. Stay ahead in a rapidly evolving industry." }
   ];
 
