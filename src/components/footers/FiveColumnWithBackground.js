@@ -15,7 +15,7 @@ const Divider = tw.div`my-16 border-b-2 border-primary-400 w-full`;
 const ThreeColRow = tw.div`flex flex-col md:flex-row items-center justify-between`;
 
 const LogoContainer = tw.div`flex items-center justify-center md:justify-start`;
-const LogoImg = tw.img`w-24 h-20`;
+const LogoImg = tw.img`w-24 h-10`;
 
 const CopywrightNotice = tw.p`text-center text-sm sm:text-base mt-8 md:mt-0 font-medium text-gray-400`;
 
