@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-
+import Select from "react-select";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/guestly-logo2.svg";
-import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { useTranslation } from "react-i18next";
 
 const Header = tw.header`
   flex justify-between items-center
@@ -25,6 +25,24 @@ export const NavLink = tw.a`
   font-semibold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `;
+
+export const SELECT = styled(Select)(() => [
+  `
+  .Select__indicator-separator {
+    ${tw`hidden`}
+  }
+  .Select__menu {
+    ${tw`text-blue-600`}
+  }
+  .css__control {
+    height: 40px;
+    width: 100%;
+    border: 1px solid #a1a1a1;
+    border-radius: 0;
+    cursor: pointer;
+  }
+`
+]);
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
@@ -56,42 +74,86 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
-export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
-  /*
-   * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
-   * This links props should be an array of "NavLinks" components which is exported from this file.
-   * Each "NavLinks" component can contain any amount of "NavLink" component, also exported from this file.
-   * This allows this Header to be multi column.
-   * So If you pass only a single item in the array with only one NavLinks component as root, you will get 2 column header.
-   * Left part will be LogoLink, and the right part will be the the NavLinks component you
-   * supplied.
-   * Similarly if you pass 2 items in the links array, then you will get 3 columns, the left will be "LogoLink", the center will be the first "NavLinks" component in the array and the right will be the second "NavLinks" component in the links array.
-   * You can also choose to directly modify the links here by not passing any links from the parent component and
-   * changing the defaultLinks variable below below.
-   * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
-   */
+export default ({
+  roundedHeaderButton = false,
+  logoLink,
+  links,
+  className,
+  collapseBreakpointClass = "lg"
+}) => {
+  const { i18n, t } = useTranslation();
+  const options = [
+    { value: "en", label: "En" },
+    { value: "it", label: "It" },
+    { value: "de", label: "De" }
+  ];
+  const selectedLang = options.find((f) => f.value === i18n.language);
+  const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
+  const collapseBreakpointCss =
+    collapseBreakPointCssMap[collapseBreakpointClass];
+  const [selectedOption, setSelectedOption] = useState(selectedLang);
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="#why-guestly">About</NavLink>
-      <NavLink href="#pricing">Pricing</NavLink>
-      <NavLink href="#about">Team</NavLink>
-      <NavLink href="#faq">FAQ</NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="#contact-us">Contact Us</PrimaryLink>
+      <NavLink href="#why-guestly" onClick={toggleNavbar}>
+        {t("common_about")}
+      </NavLink>
+      <NavLink href="#pricing" onClick={toggleNavbar}>
+        {t("common_pricing")}
+      </NavLink>
+      <NavLink href="#about" onClick={toggleNavbar}>
+        {t("common_team")}
+      </NavLink>
+      <NavLink href="#faq" onClick={toggleNavbar}>
+        {t("common_faq")}
+      </NavLink>
+      <PrimaryLink
+        onClick={toggleNavbar}
+        css={roundedHeaderButton && tw`rounded-full`}
+        href="#contact-us"
+      >
+        {t("common_contact_us")}
+      </PrimaryLink>
     </NavLinks>
   ];
-
-  const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
-  const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />
-      
+    </LogoLink>
+  );
+
+  const mobileLogoLink = (
+    <LogoLink href="#" onClick={toggleNavbar}>
+      <img src={logo} alt="logo" />
     </LogoLink>
   );
 
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
+
+  const colourStyles = {
+    control: (styles) => ({ ...styles, backgroundColor: "white" }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled
+          ? undefined
+          : isSelected
+          ? "#7069FE"
+          : isFocused
+          ? "#a0aec0"
+          : undefined,
+        ":active": {
+          ...styles[":active"],
+          backgroundColor: !isDisabled
+            ? isSelected
+              ? data.color
+              : "#7069FE"
+            : undefined
+        }
+      };
+    }
+  };
 
   return (
     <Header className={className || "header-light"}>
@@ -100,15 +162,39 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         {links}
       </DesktopNavLinks>
 
-      <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>
-        {logoLink}
-        <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
+      <MobileNavLinksContainer
+        css={collapseBreakpointCss.mobileNavLinksContainer}
+      >
+        {mobileLogoLink}
+        <MobileNavLinks
+          initial={{ x: "150%", display: "none" }}
+          animate={animation}
+          css={collapseBreakpointCss.mobileNavLinks}
+        >
           {links}
         </MobileNavLinks>
-        <NavToggle onClick={toggleNavbar} className={showNavLinks ? "open" : "closed"}>
-          {showNavLinks ? <CloseIcon tw="w-6 h-6 fixed" style={{ top: "2.5rem", right: "2rem"}} /> : <MenuIcon tw="w-6 h-6" />}
-        </NavToggle>
+        {showNavLinks ? (
+          <CloseIcon
+            tw="w-6 h-6 fixed"
+            style={{ top: "2.5rem", right: "2rem", zIndex: "100" }}
+            onClick={toggleNavbar}
+          />
+        ) : (
+          ""
+        )}
       </MobileNavLinksContainer>
+
+      <div style={{ right: "2rem", position: "absolute" }}>
+        <SELECT
+          defaultValue={selectedOption}
+          onChange={(v) => {
+            setSelectedOption(v);
+            i18n.changeLanguage(v.value);
+          }}
+          options={options}
+          styles={colourStyles}
+        />
+      </div>
     </Header>
   );
 };

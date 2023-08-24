@@ -9,6 +9,7 @@ import Header from "../headers/light.js";
 
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-1.svg";
 import DesignIllustration from "../../images/design-illustration-2.svg";
+import { useTranslation } from "react-i18next";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row lg:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
@@ -25,7 +26,7 @@ const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3 -z-10`}
 `;
 
-const TEXTS = ['Hotel', 'B&B', 'Apartment', 'Resort'];
+const TEXTS = ['common_hotel', 'common_b&b', 'common_apartment', 'common_resort'];
 
 
 export default ({ roundedHeaderButton }) => {
@@ -38,6 +39,7 @@ export default ({ roundedHeaderButton }) => {
     );
     return () => clearTimeout(intervalId);
   }, []);
+  const {t} = useTranslation()
   return (
     <>
       <Header roundedHeaderButton={roundedHeaderButton} />
@@ -45,12 +47,12 @@ export default ({ roundedHeaderButton }) => {
         <TwoColumn>
           <LeftColumn>
             <Heading>
-              Guest Communication Tool for your <span tw="text-primary-500">
-              <TextTransition inline={true} springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>
+              {t('section_0_title')} <span tw="text-primary-500">
+              <TextTransition inline={true} springConfig={presets.wobbly}>{t(TEXTS[index % TEXTS.length])}</TextTransition>
               </span>
             </Heading>
             <Paragraph>
-              Build customer relationships, answer questions, send booking updates, promote your business. All in WhatsApp.
+              {t('section_0_des')}
             </Paragraph>
           </LeftColumn>
           <RightColumn>

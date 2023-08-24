@@ -1,5 +1,6 @@
 import React from "react";
 import tw from "twin.macro";
+import { useTranslation } from "react-i18next";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
 import Features from "components/features/ThreeColWithSideImage.js";
@@ -15,24 +16,24 @@ import { ReactComponent as CheckIcon } from "feather-icons/dist/icons/check.svg"
 export default () => {
   const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
   const HighlightedText = tw.span`text-primary-500`;
-
+  const { t } = useTranslation();
   return (
     <AnimationRevealPage>
       <Hero roundedHeaderButton={true} />
       <Features
-        subheading={<Subheading>Why Guestly</Subheading>}
+        subheading={<Subheading>{t('section_1_title')}</Subheading>}
         heading={
           <>
-            Leverage your <HighlightedText>guest experience</HighlightedText>
+            {t('section_1_header_1')}<HighlightedText> {t('section_1_header_2')}</HighlightedText>
           </>
         }
-        description="At Guestly, we're on a mission to revolutionize the way Hotels, B&Bs, Apartments and Resorts communicate with their guests."
+        description={t('section_1_description')}
       />
       <FeatureWithSteps
-        subheading={<Subheading>Get Started</Subheading>}
+        subheading={<Subheading>{t('section_2_title')}</Subheading>}
         heading={
           <>
-            Unlock the power of <HighlightedText>Guest Communication</HighlightedText>
+            {t('section_2_header_1')} <HighlightedText>{t('section_2_header_2')}</HighlightedText>
           </>
         }
         textOnLeft={false}
@@ -40,82 +41,82 @@ export default () => {
         decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
       />
       <Pricing
-        subheading={<Subheading>Pricing</Subheading>}
+        subheading={<Subheading>{t('section_3_title')}</Subheading>}
         heading={
           <>
-            Start <HighlightedText>chatting</HighlightedText> with your guests{" "}
-            <HighlightedText>today</HighlightedText>
+            {t('section_3_header_1')} <HighlightedText>{t('section_3_header_2')}</HighlightedText> {t('section_3_header_3')}{" "}
+            <HighlightedText>{t('section_3_header_4')}</HighlightedText>
           </>
         }
-        primaryButtonText="Request Now"
+        primaryButtonText={t('section_3_button_text')}
         features={[
           {
             Icon: CheckIcon,
-            title: "30-day free trial",
+            title: t('section_3_fe_1'),
             iconContainerCss: tw`bg-green-300 text-green-800`
           },
           {
             Icon: CheckIcon,
-            title: "No setup fees",
+            title: t('section_3_fe_2'),
             iconContainerCss: tw`bg-green-300 text-green-800`
           },
           {
             Icon: CheckIcon,
-            title: "PC & mobile ready",
+            title: t('section_3_fe_3'),
             iconContainerCss: tw`bg-green-300 text-green-800`
           }
         ]}
         plans={[
           {
-            name: "Starter",
+            name: t('section_3_p_1_name'),
             price: "€49",
-            duration: "Monthly (pay yearly)",
-            mainFeature: "For small businesses",
+            duration: t("common_monthly"),
+            mainFeature: t("section_3_p_1_fe"),
             features: [
-              "750 conversations/month*",
-              "Unlimited contacts",
-              "3 languages supported",
-              "1 user",
-              "Direct messages",
-              "Automated broadcast messages",
-              "Website widget",
-              "PMS API integration*",
-              "Customer support"
+              `750 ${t("common_con_per_month")}*`,
+              t("common_unl_cont"),
+              `3 ${t('common_lang_sup')}`,
+              `1 ${t("common_user")}`,
+              t("common_dir_mess"),
+              t("common_auto_broad_mess"),
+              t("common_web_wid"),
+              t("common_api_int"),
+              t("common_cus_supp"),
             ]
           },
           {
-            name: "Pro",
+            name: t('section_3_p_2_name'),
             price: "€79",
-            duration: "Monthly (pay yearly)",
-            mainFeature: "For the SMEs",
+            duration: t("common_monthly"),
+            mainFeature: t("section_3_p_2_fe"),
             features: [
-              "2000 conversations/month*",
-              "Unlimited contacts",
-              "3 languages supported",
-              "5 users",
-              "Direct messages",
-              "Automated broadcast messages",
-              "Website widget",
-              "PMS API integration*",
-              "Customer upport"
+              `2000 ${t("common_con_per_month")}*`,
+              t("common_unl_cont"),
+              `3 ${t('common_lang_sup')}`,
+              `5 ${t("common_users")}`,
+              t("common_dir_mess"),
+              t("common_auto_broad_mess"),
+              t("common_web_wid"),
+              t("common_api_int"),
+              t("common_cus_supp"),
             ],
             featured: true
           },
           {
-            name: "Premium",
+            name: t('section_3_p_3_name'),
             price: "€139",
-            duration: "Monthly (pay yearly)",
-            mainFeature: "For large businesses",
+            duration: t("common_monthly"),
+            mainFeature: t("section_3_p_3_fe"),
             features: [
-              "Unlimited conversations/month*",
-              "Unlimited contacts",
-              "3 languages supported",
-              "Unlimited users",
-              "Direct messages",
-              "Automated broadcast messages",
-              "Website widget",
-              "PMS API integration*",
-              "Customer support"
+              `${t("common_unlimited")} ${t("common_con_per_month")}*`,
+              t("common_unl_cont"),
+              `3 ${t('common_lang_sup')}`,
+              `${t("common_unlimited")} ${t("common_users")}`,
+              t("common_dir_mess"),
+              t("common_auto_broad_mess"),
+              t("common_web_wid"),
+              t("common_api_int"),
+              t("common_cus_supp"),
             ]
           }
         ]}
@@ -123,39 +124,33 @@ export default () => {
       <ProfileThreeColGridCards />
       <GetStarted />
       <FAQ
-        subheading={<Subheading>FAQS</Subheading>}
+        subheading={<Subheading>{t('section_4_title')}</Subheading>}
         heading={
           <>
-            You have <HighlightedText>questions?</HighlightedText>
+            {t("section_4_header_1")} <HighlightedText>{t("section_4_header_2")}?</HighlightedText>
           </>
         }
+        description={t("section_4_des")}
         faqs={[
           {
-            question: "What phone number should I use for WhatsApp?",
-            answer:
-              "You should use your business phone number to connect with your guests on WhatsApp through Guestly."
+            question: t("section_4_faqs_q1"),
+            answer: t("section_4_faqs_a1")
           },
           {
-            question:
-              "Which PMS integrations do you support?",
-            answer:
-              "Currently, we support seamless integrations with XENUS and ASA Hotel, ensuring that your existing systems work harmoniously with Guestly."
+            question: t("section_4_faqs_q2"),
+            answer: t("section_4_faqs_a2")
           },
           {
-            question: "What sets Guestly apart from the WhatsApp Business app?",
-            answer:
-              "Unlike the standard WhatsApp Business app, Guestly leverages the robust capabilities of the WhatsApp Business API. This empowers you with automated messages, broadcasting, marketing campaigns, multi-device support, and flawless PMS integration."
+            question: t("section_4_faqs_q3"),
+            answer: t("section_4_faqs_a3")
           },
           {
-            question:
-              "Is there an extra fee for using the WhatsApp Business API?",
-            answer:
-              "Yes, there is an additional cost of €0.03-0.05 for each conversation (24-hour message threads) that you send using the WhatsApp Business API. This fee is paid to WhatsApp from your Facebook Business Account."
+            question: t("section_4_faqs_q4"),
+            answer: t("section_4_faqs_a4")
           },
           {
-            question: "How secure is my guest data with Guestly?",
-            answer:
-              "We prioritize the security and privacy of your guest data. Our system employs robust encryption protocols and adheres to strict data protection standards (GDPR) to ensure that your information remains secure and confidential."
+            question: t("section_4_faqs_q5"),
+            answer: t("section_4_faqs_a5")
           }
         ]}
       />

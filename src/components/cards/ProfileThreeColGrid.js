@@ -8,6 +8,7 @@ import {
   Subheading as SubheadingBase
 } from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
+import { useTranslation } from "react-i18next";
 
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)``;
@@ -41,31 +42,32 @@ export default ({
   cards = [
     {
       imageSrc: "/Nicola.jpg",
-      position: "Founder & CEO",
-      name: "Nicola Giorgi"
+      position: "common_founder_ceo",
+      name: "common_nicola"
     },
     {
       imageSrc: "/luca.jpg",
-      position: "Founder & CTO",
-      name: "Luca Sabiucciu"
+      position: "common_founder_cto",
+      name: "common_luca"
     }
   ]
 }) => {
+  const { t } = useTranslation();
   return (
     <Container id="about">
       <ContentWithPaddingXl>
         <HeadingContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
-          {<Heading>{<>Meet the <HighlightedText> minds </HighlightedText> behind Guestly</>}</Heading>}
-          {description && <Description>{description}</Description>}
+          {subheading && <Subheading>{t('section_5_title')}</Subheading>}
+          {<Heading>{<>{t('section_5_header_1')} <HighlightedText> {t('section_5_header_2')} </HighlightedText> {t('section_5_header_3')}</>}</Heading>}
+          {description && <Description>{t('section_5_des')}</Description>}
         </HeadingContainer>
         <Cards>
           {cards.map((card, index) => (
             <Card key={index}>
               <CardImage imageSrc={card.imageSrc} />
               <CardContent>
-                <span className="position">{card.position}</span>
-                <span className="name">{card.name}</span>
+                <span className="position">{t(card.position)}</span>
+                <span className="name">{t(card.name)}</span>
               </CardContent>
             </Card>
           ))}

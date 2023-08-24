@@ -4,6 +4,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import LogoImage from "images/guestly-logo3.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
+import { useTranslation } from "react-i18next";
 
 const Container = tw.div`relative bg-primary-500 text-gray-100 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10`;
@@ -30,15 +31,16 @@ const DecoratorBlob2 = tw(
 )`absolute bottom-0 right-0 w-80 h-80 transform  translate-x-32 translate-y-48 text-primary-700 opacity-50`;
 
 export default () => {
+  const { t } = useTranslation();
   return (
     <Container>
       <Content>
         <LinksContainer>
-          <Link href="#why-guestly">About</Link>
-          <Link href="#pricing">Pricing</Link>
-          <Link href="#about">Team</Link>
-          <Link href="#faq">FAQ</Link>
-          <Link href="#contact-us">Contact Us</Link>
+          <Link href="#why-guestly">{t('common_about')}</Link>
+          <Link href="#pricing">{t('common_pricing')}</Link>
+          <Link href="#about">{t('common_team')}</Link>
+          <Link href="#faq">{t('common_faq')}</Link>
+          <Link href="#contact-us">{t('common_contact_us')}</Link>
         </LinksContainer>
         <Divider />
         <ThreeColRow>
@@ -46,7 +48,7 @@ export default () => {
             <LogoImg src={LogoImage} />
           </LogoContainer>
           <CopywrightNotice>
-            &copy; 2023 Guestly. All Rights Reserved. Owned by Giorgi Nicola - VAT IT03029970211
+            &copy; 2023 {t('section_7_title')} - VAT IT03029970211
           </CopywrightNotice>
         </ThreeColRow>
       </Content>

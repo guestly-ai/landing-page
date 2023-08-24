@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { ContentWithPaddingXl, Container } from "components/misc/Layouts";
+import { useTranslation } from "react-i18next";
 
 const PrimaryBackgroundContainer = tw.div`py-16 lg:py-20 bg-purple-200 rounded-lg relative`
 const Row = tw.div`px-4 sm:px-16 mx-auto flex justify-center items-center relative z-10 flex-col lg:flex-row text-center lg:text-left`;
@@ -22,25 +23,26 @@ const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-l
 const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 transform -translate-x-20 translate-y-32 text-primary-500 opacity-5`
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-primary-500 opacity-5`
 export default ({
-  subheading = "Interested in Guestly?",
-  heading = "Join the closed beta now.",
+  subheading = "section_6_header_1",
+  heading = "section_6_header_2",
   primaryLinkText = "Get Started",
   primaryLinkUrl = "http://timerse.com",
-  secondaryLinkText = "Contact Us",
+  secondaryLinkText = "common_contact_us",
   secondaryLinkUrl = "#contact-us",
   pushDownFooter = true
 }) => {
+  const { t } = useTranslation();
   return (
     <Container css={pushDownFooter && tw`mb-20 lg:mb-24`}>
       <ContentWithPaddingXl>
       <PrimaryBackgroundContainer>
         <Row>
           <TextContainer>
-            {subheading && <Subheading>{subheading}</Subheading>}
-            <Heading>{heading}</Heading>
+            {subheading && <Subheading>{t(subheading)}</Subheading>}
+            <Heading>{t(heading)}</Heading>
           </TextContainer>
           <LinksContainer>
-            <SecondaryLink href={secondaryLinkUrl}>{secondaryLinkText}</SecondaryLink>
+            <SecondaryLink href={secondaryLinkUrl}>{t(secondaryLinkText)}</SecondaryLink>
           </LinksContainer>
         </Row>
         <DecoratorBlobContainer>

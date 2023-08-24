@@ -5,6 +5,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import TeamIllustrationSrc from "images/get-started.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
+import { useTranslation } from "react-i18next";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -55,19 +56,19 @@ export default ({
   decoratorBlobCss = null,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-
+  const { t } = useTranslation();
   const defaultSteps = [
     {
-      heading: "Sign up to our solution",
-      description: "Joining Guestly is as easy as a few clicks. Begin your journey by signing up on our platform. Whether you're a small B&B or a large Resort, Guestly caters to your unique communication needs."
+      heading: "section_2_step_title1",
+      description: "section_2_step_des1"
     },
     {
-      heading: "Connect your WhatsApp account and PMS",
-      description: "Once you're in, it's time to bring the magic to life. Connect your WhatsApp account, and integrate your Property Management System (PMS) for a seamless flow of information. Our intuitive interface guides you through the process."
+      heading: "section_2_step_title1",
+      description: "section_2_step_des1"
     },
     {
-      heading: "Engage with your guests",
-      description: "With everything set up, you're ready to engage like never before. Reach out to your guests, provide instant updates, answer queries, and craft memorable interactions - all through the platform they love: WhatsApp."
+      heading: "section_2_step_title1",
+      description: "section_2_step_des1"
     }
   ];
 
@@ -89,8 +90,8 @@ export default ({
                 <Step key={index}>
                   <StepNumber>{(index+1).toString().padStart(2,'0')}</StepNumber>
                   <StepText>
-                    <StepHeading>{step.heading}</StepHeading>
-                    <StepDescription>{step.description}</StepDescription>
+                    <StepHeading>{t(step.heading)}</StepHeading>
+                    <StepDescription>{t(step.description)}</StepDescription>
                   </StepText>
                 </Step>
               ))}
