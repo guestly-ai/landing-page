@@ -127,7 +127,7 @@ export default () => {
         subheading={<Subheading>{t('section_4_title')}</Subheading>}
         heading={
           <>
-            {t("section_4_header_1")} <HighlightedText>{t("section_4_header_2")}?</HighlightedText>
+            {t("section_4_header_1")} <HighlightedText>{t("section_4_header_2")}</HighlightedText>?
           </>
         }
         description={t("section_4_des")}
