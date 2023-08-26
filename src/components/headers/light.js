@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
-import Select from "react-select";
+import Select, { components } from "react-select";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/guestly-logo2.svg";
+import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { ReactComponent as GlobeIcon } from "feather-icons/dist/icons/globe.svg";
 import { useTranslation } from "react-i18next";
 
 const Header = tw.header`
@@ -63,10 +65,26 @@ export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-b
 export const NavToggle = tw.button`
   lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `;
+const LangIcon = styled.span`
+  ${tw`transition duration-300 p-0`}
+  svg {
+    ${tw`w-5 h-5 text-gray-600`}
+  }
+`;
+const LangCont = tw.div`flex`;
 export const MobileNavLinks = motion(styled.div`
   ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
   ${NavLinks} {
     ${tw`flex flex-col items-center`}
+  }
+  ${LangCont} {
+    ${tw`flex flex-col items-center`}
+  }
+  ${SELECT} {
+    ${tw`mr-4 p-0 text-gray-900 text-lg`}
+    div {
+      font-size: 1.125rem
+    }
   }
 `);
 
@@ -83,15 +101,86 @@ export default ({
 }) => {
   const { i18n, t } = useTranslation();
   const options = [
-    { value: "en", label: "En" },
-    { value: "it", label: "It" },
-    { value: "de", label: "De" }
+    { value: "en", label: "EN" },
+    { value: "it", label: "IT" },
+    { value: "de", label: "DE" }
   ];
   const selectedLang = options.find((f) => f.value === i18n.language);
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss =
     collapseBreakPointCssMap[collapseBreakpointClass];
   const [selectedOption, setSelectedOption] = useState(selectedLang);
+  // added type if using typescript
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <LangIcon>
+          <GlobeIcon tw="border-transparent" style={{color: "hsl(0, 0%, 20%)"}} />
+        </LangIcon>
+      </components.DropdownIndicator>
+    );
+  };
+
+  const colourStyles = {
+    control: (styles) => ({
+      ...styles,
+      flexDirection: "row-reverse",
+      borderColor: 'transparent',
+      border: "none",
+      boxShadow: "none",
+      borderStyle: "solid",
+      borderRadius: 0,
+      fontWeight: 600,
+      height: "100%",
+      fontSize: "0.875rem",
+      fontColor: "hsl(0, 0%, 20%)",
+      ":hover *": {
+        cursor: "pointer",
+        color: "#7069FE",
+      },
+      ":hover": {
+        borderColor: '#7069FE',
+        borderWidth: "0 0 2px 0",
+        borderStyle: "solid",
+        borderRadius: 0,
+      },
+      ":active": {
+        border: 0
+      },
+      ":focus": {
+        border: 0,
+      },
+      "> *": {
+        padding: "0 !important"
+      }
+    }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        fontFamily: "Inter 1rem",
+        fontWeight: 600,
+        backgroundColor: "white",
+        textAlign: "center",
+        color: isFocused || isSelected ? "#7069FE" : undefined,
+        ":active": {
+          ...styles[":active"],
+          color: "#7069FE",
+        },
+        ":hover": {
+          borderColor: '#7069FE',
+          borderWidth: "0 0 2px 0",
+          borderStyle: "solid",
+          borderRadius: 0,
+        },
+        content: '""'
+      };
+    },
+    input: (styles) => ({
+      ...styles,
+      fontFamily: "Inter",
+      padding: "0"
+    })
+  };
   const defaultLinks = [
     <NavLinks key={1}>
       <NavLink href="#why-guestly" onClick={toggleNavbar}>
@@ -106,13 +195,31 @@ export default ({
       <NavLink href="#faq" onClick={toggleNavbar}>
         {t("common_faq")}
       </NavLink>
-      <PrimaryLink
-        onClick={toggleNavbar}
-        css={roundedHeaderButton && tw`rounded-full`}
-        href="#contact-us"
-      >
-        {t("common_contact_us")}
-      </PrimaryLink>
+    </NavLinks>,
+
+    <NavLinks key={2}>
+      <LangCont>
+        <SELECT
+          defaultValue={selectedOption}
+          onChange={(v) => {
+            setSelectedOption(v);
+            i18n.changeLanguage(v.value);
+          }}
+          options={options}
+          components={{ DropdownIndicator, IndicatorSeparator: "" }}
+          isSearchable={false}
+          //menuIsOpen={true}
+          styles={colourStyles}
+          tw="pr-4"
+        />
+        <PrimaryLink
+          onClick={toggleNavbar}
+          css={roundedHeaderButton && tw`rounded-full`}
+          href="#contact-us"
+        >
+          {t("common_contact_us")}
+        </PrimaryLink>
+      </LangCont>
     </NavLinks>
   ];
 
@@ -122,38 +229,8 @@ export default ({
     </LogoLink>
   );
 
-  const mobileLogoLink = (
-    <LogoLink href="#" onClick={toggleNavbar}>
-      <img src={logo} alt="logo" />
-    </LogoLink>
-  );
-
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
-
-  const colourStyles = {
-    control: (styles) => ({ ...styles, backgroundColor: "white" }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: isDisabled
-          ? undefined
-          : isSelected
-          ? "#7069FE"
-          : isFocused
-          ? "#a0aec0"
-          : undefined,
-        ":active": {
-          ...styles[":active"],
-          backgroundColor: !isDisabled
-            ? isSelected
-              ? data.color
-              : "#7069FE"
-            : undefined
-        }
-      };
-    }
-  };
 
   return (
     <Header className={className || "header-light"}>
@@ -165,7 +242,7 @@ export default ({
       <MobileNavLinksContainer
         css={collapseBreakpointCss.mobileNavLinksContainer}
       >
-        {mobileLogoLink}
+        {logoLink}
         <MobileNavLinks
           initial={{ x: "150%", display: "none" }}
           animate={animation}
@@ -173,28 +250,20 @@ export default ({
         >
           {links}
         </MobileNavLinks>
-        {showNavLinks ? (
-          <CloseIcon
-            tw="w-6 h-6 fixed"
-            style={{ top: "2.5rem", right: "2rem", zIndex: "100" }}
-            onClick={toggleNavbar}
-          />
-        ) : (
-          ""
-        )}
+        <NavToggle
+          onClick={toggleNavbar}
+          className={showNavLinks ? "open" : "closed"}
+        >
+          {showNavLinks ? (
+            <CloseIcon
+              tw="w-6 h-6 fixed"
+              style={{ top: "2.5rem", right: "2rem" }}
+            />
+          ) : (
+            <MenuIcon tw="w-6 h-6" />
+          )}
+        </NavToggle>
       </MobileNavLinksContainer>
-
-      <div style={{ right: "2rem", position: "absolute" }}>
-        <SELECT
-          defaultValue={selectedOption}
-          onChange={(v) => {
-            setSelectedOption(v);
-            i18n.changeLanguage(v.value);
-          }}
-          options={options}
-          styles={colourStyles}
-        />
-      </div>
     </Header>
   );
 };

@@ -63,12 +63,12 @@ export default ({
       description: "section_2_step_des1"
     },
     {
-      heading: "section_2_step_title1",
-      description: "section_2_step_des1"
+      heading: "section_2_step_title2",
+      description: "section_2_step_des2"
     },
     {
-      heading: "section_2_step_title1",
-      description: "section_2_step_des1"
+      heading: "section_2_step_title3",
+      description: "section_2_step_des3"
     }
   ];
 
