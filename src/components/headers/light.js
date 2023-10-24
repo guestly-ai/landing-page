@@ -183,16 +183,16 @@ export default ({
   };
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="#why-guestly" onClick={toggleNavbar}>
+      <NavLink href="/#why-guestly" onClick={toggleNavbar}>
         {t("common_about")}
       </NavLink>
-      <NavLink href="#pricing" onClick={toggleNavbar}>
+      <NavLink href="/#pricing" onClick={toggleNavbar}>
         {t("common_pricing")}
       </NavLink>
-      <NavLink href="#about" onClick={toggleNavbar}>
+      <NavLink href="/#about" onClick={toggleNavbar}>
         {t("common_team")}
       </NavLink>
-      <NavLink href="#faq" onClick={toggleNavbar}>
+      <NavLink href="/#faq" onClick={toggleNavbar}>
         {t("common_faq")}
       </NavLink>
     </NavLinks>,
@@ -215,7 +215,7 @@ export default ({
         <PrimaryLink
           onClick={toggleNavbar}
           css={roundedHeaderButton && tw`rounded-full`}
-          href="#contact-us"
+          href="/#contact-us"
         >
           {t("common_contact_us")}
         </PrimaryLink>

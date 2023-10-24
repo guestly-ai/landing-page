@@ -5,11 +5,14 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import LogoImage from "images/guestly-logo3.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-9.svg";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Container = tw.div`relative bg-primary-500 text-gray-100 -mb-8 -mx-8 px-8 py-20 lg:py-24`;
 const Content = tw.div`max-w-screen-xl mx-auto relative z-10`;
 
-const Link = tw.a`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-300 pb-1 transition duration-300 mt-2 mx-4`;
+const Link1 = tw.a`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-300 pb-1 transition duration-300 mt-2 mx-4`;
+
+const Link2 = tw(Link)`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-300 pb-1 transition duration-300 mt-2 mx-4`;
 
 const Divider = tw.div`my-16 border-b-2 border-primary-400 w-full`;
 
@@ -36,11 +39,12 @@ export default () => {
     <Container>
       <Content>
         <LinksContainer>
-          <Link href="#why-guestly">{t('common_about')}</Link>
-          <Link href="#pricing">{t('common_pricing')}</Link>
-          <Link href="#about">{t('common_team')}</Link>
-          <Link href="#faq">{t('common_faq')}</Link>
-          <Link href="#contact-us">{t('common_contact_us')}</Link>
+          <Link1 href="/#why-guestly">{t('common_about')}</Link1>
+          <Link1 href="/#pricing">{t('common_pricing')}</Link1>
+          <Link1 href="/#about">{t('common_team')}</Link1>
+          <Link1 href="/#faq">{t('common_faq')}</Link1>
+          <Link1 href="/#contact-us">{t('common_contact_us')}</Link1>
+          <Link2 to="/privacy-policy">{t('common_privacy_policy')}</Link2>
         </LinksContainer>
         <Divider />
         <ThreeColRow>

@@ -98,7 +98,7 @@ import LandingPage from "pages/Home";
  // import ContactUsPage from "pages/ContactUs.js";
 // import BlogIndexPage from "pages/BlogIndex.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
-// import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
+import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
 import ComponentRenderer from "ComponentRenderer.js";
 // import MainLandingPage from "MainLandingPage.js";
@@ -118,7 +118,9 @@ export default function App() {
         <Routes>
           <Route path="/components/:type/:subtype/:name" element={<ComponentRenderer />} />
           <Route path="/components/:type/:name" element={<ComponentRenderer />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
+          
           <Route path="/" element={<LandingPage />} />
         </Routes>
       </Router>
